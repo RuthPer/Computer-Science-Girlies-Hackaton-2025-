@@ -1,4 +1,34 @@
 body{
     width: 400px; /* Your desired width */
     background-color: aquamarine;
+
+}
+
+.container{
+    background-color: bisque;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container:hover{
+    /* https://grabient.com/IwOgDA7AzANCBswCccCsEBMMC0YTDDDg3hVxA1SPNWFnIBYxgc94IXx3XwAOI-ASA?style=linearGradient&steps=3&angle=45 */
+
+    background: linear-gradient(45deg, rgba(250, 218, 97, 1.000) 0.000%, rgba(255, 145, 136, 1.000) 50.000%, rgba(255, 90, 205, 1.000) 100.000%)
+}
+
+
+#temp{
+    background-color: antiquewhite;
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+#time{
+    background-color: antiquewhite;
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 15px;
 }
