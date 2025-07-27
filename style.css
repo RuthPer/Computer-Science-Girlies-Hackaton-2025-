@@ -60,6 +60,27 @@ ul {
   list-style-type: none;
 }
 
+#jokeContainer{
+    padding: 10px;
+    text-align: center;
+}
+
+button{
+    background-color: antiquewhite;
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+}
+
+button:hover{
+    background-color: rgb(226, 174, 106);
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+}
+
 
 #currenttemps{
     text-align: center;
