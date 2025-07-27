@@ -125,7 +125,7 @@ async function day7forecast(latitude, longitude) {
             `;
 
         document.getElementById("saftyguide").innerHTML= safetyTips;
-        
+
     } catch (error) {
         console.error("Error fetching 7-day forecast:", error);
     }
@@ -140,6 +140,75 @@ function changeBackground(color){
     document.body.style.background = color;
 
 }
+
+
+async function hourlyUVgraph() {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=uv_index&timezone=auto`;
+
+    const response = await fetch(url);
+    const record = await response.json();
+
+    const uvIndex = record.hourly.uv_index;
+    const times = record.hourly.time;
+
+    const today = new Date().toISOString().split("T")[0];
+    const todayUV = [];
+    const todayTimes = [];
+
+    for (let i = 0; i < times.length; i++) {
+        if (times[i].startsWith(today)) {
+            todayTimes.push(times[i].split("T")[1]); // Extract "HH:MM"
+            todayUV.push(uvIndex[i]);
+        }
+    }
+
+    const ctx = document.getElementById('uvHourlyChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: todayTimes,
+            datasets: [{
+                label: 'UV Index (Hourly)',
+                data: todayUV,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'crimson',
+                borderWidth: 2,
+                tension: 0.3,
+                pointRadius: 3
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 11,
+                    title: {
+                        display: true,
+                        text: 'UV Index'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Hour of Day'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: "Today's Hourly UV Index Forecast",
+                    font: {
+                        size: 18
+                    }
+                }
+            }
+        }
+    });
+}
+
+hourlyUVgraph();
 
 
 
