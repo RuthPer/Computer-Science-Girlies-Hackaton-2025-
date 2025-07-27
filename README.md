@@ -8,7 +8,7 @@ A lightweight, real-time Chrome extension that helps you *not* get caught off gu
 
 **Heat Wave Weather Detector** is a Chrome extension that checks your local weather and gives you immediate heat alerts with a clean, color-coded UI. It grabs your geolocation, pulls in real-time data like temperature, humidity, UV index, and a 7-day forecast — all from reliable weather APIs. It even includes a built-in lame joke generator to keep things light when the heat isn’t.
 
----
+----
 
 ## 🌟 Features
 
