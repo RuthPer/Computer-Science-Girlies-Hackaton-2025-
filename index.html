@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Wave Advisory</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Heat Wave Advisory</h1>
+        <nav class="nav-tabs">
+            <a class="nav-tab active" href="index.html">Advisory</a>
+            <a class="nav-tab" href="jokes.html">Fun</a>
+        </nav>
+    </div>
+
+    <div class="loading" id="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Getting weather data...</p>
+    </div>
+
+    <div class="weather-info" id="weather-info">
+        <!-- HeatWave Alert Status -->
+        <div class="alert-card">
+            <div class="alert-content" id="alertContent">
+                <div class="alert-icon" id="alertIcon">⚠️</div>
+                <div class="alert-text" id="alertText">Loading weather data...</div>
+            </div>
+        </div>
+
+        <!-- Time & Location -->
+        <div class="time-card">
+            <div class="time-display" id="time"></div>
+            <div class="date-display" id="date"></div>
+            <div class="location-display" id="location">📍 Getting location...</div>
+        </div>
+
+        <!-- Temperature -->
+        <div class="temp-card">
+            <div class="main-temp">
+                <span class="temp-value" id="currentTemp">--</span>
+                <span class="temp-unit">°F</span>
+            </div>
+            <div class="temp-details">
+                <div class="temp-detail">
+                    <span class="detail-label">Feels like</span>
+                    <span class="detail-value" id="feelsLike">--°F</span>
+                </div>
+                <div class="temp-detail">
+                    <span class="detail-label">Humidity</span>
+                    <span class="detail-value" id="humidity">--%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- UV Index -->
+        <div class="uv-card">
+            <div class="card-header">
+                <h3>UV Index Today</h3>
+                <div class="uv-current">
+                    <span class="uv-value" id="currentUV">--</span>
+                    <span class="uv-level" id="uvLevel">Loading</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="uvChart"></canvas>
+            </div>
+            <div class="uv-stats">
+                <div class="uv-stat">
+                    <span class="stat-label">Peak Today</span>
+                    <span class="stat-value" id="peakToday">--</span>
+                </div>
+                <div class="uv-stat">
+                    <span class="stat-label">Yesterday</span>
+                    <span class="stat-value" id="vsYesterday">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forecast Card -->
+        <div class="forecast-card">
+            <h3 class="card-title">Weekly Heat Forecast</h3>
+            <div class="forecast-grid" id="forecastGrid">
+            </div>
+        </div>
+
+        <!-- Safety Guidelines Card -->
+        <div class="safety-card">
+            <h3 class="card-title">Heat Safety Guidelines</h3>
+            <div class="safety-tips">
+                <div class="tip-item">
+                    <span class="tip-icon">💧</span>
+                    <span class="tip-text">Stay hydrated - drink water every hour</span>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">🕐</span>
+                    <span class="tip-text">Avoid outdoor activities 11AM-4PM</span>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">👕</span>
+                    <span class="tip-text">Wear light-colored, loose clothing</span>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">🏠</span>
+                    <span class="tip-text">Check on elderly neighbors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="error" id="error" style="display: none;">
+        <div class="error-content">
+            <p>Unable to get weather data</p>
+            <button id="retry-btn" class="retry-btn">Try Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
